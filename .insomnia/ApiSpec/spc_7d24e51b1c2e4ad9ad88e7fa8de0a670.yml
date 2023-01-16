@@ -1,0 +1,136 @@
+_id: spc_7d24e51b1c2e4ad9ad88e7fa8de0a670
+type: ApiSpec
+parentId: wrk_29088865483246a1a25c4f108d70b51d
+modified: 1673872998552
+created: 1673872998552
+fileName: my-spec.yaml
+contents: '{"openapi":"3.0.2","info":{"title":"Few-shot
+  Learning","version":"0.1.0"},"paths":{"/readiness":{"get":{"tags":["monitoring"],"summary":"Readiness","operationId":"readiness_readiness_get","responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{}}}}}}},"/liveness":{"get":{"tags":["monitoring"],"summary":"Liveness","operationId":"liveness_liveness_get","responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{}}}}}}},"/metrics":{"get":{"tags":["monitoring"],"summary":"Metrics","operationId":"metrics_metrics_get","parameters":[{"required":false,"schema":{"title":"Accept","type":"string"},"name":"accept","in":"header"}],"responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation
+  Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/index_intent":{"post":{"summary":"Method","description":"Put
+  index of docs to
+  elastic","operationId":"method_index_intent_post","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/IndexIntentRequest"}}},"required":true},"responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/IndexIntentResponse"}}}},"422":{"description":"Validation
+  Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/search_samples":{"post":{"summary":"Method","description":"Search
+  samples with specified intent id in
+  elastic","operationId":"method_search_samples_post","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SearchSamplesRequest"}}},"required":true},"responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SearchSamplesResponse"}}}},"422":{"description":"Validation
+  Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/search_intent":{"post":{"summary":"Method","description":"Search
+  intent with similar samples in
+  elastic","operationId":"method_search_intent_post","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SearchIntentRequest"}}},"required":true},"responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SearchIntentResponse"}}}},"422":{"description":"Validation
+  Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/search_intent_dummy":{"post":{"summary":"Search
+  Intent Dummy","description":"Dummy example of
+  /search_intent_method","operationId":"search_intent_dummy_search_intent_dummy_post","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SearchIntentRequest"}}},"required":true},"responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SearchIntentResponse"}}}},"422":{"description":"Validation
+  Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/":{"delete":{"summary":"Method","description":"Delete
+  index from
+  elastic","operationId":"method__delete","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DeleteRequest"}}},"required":true},"responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DeleteResponse"}}}},"422":{"description":"Validation
+  Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/info":{"get":{"summary":"Method","description":"Get
+  info about all indices from
+  elastic","operationId":"method_info_get","responses":{"200":{"description":"Successful
+  Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/InfoResponse"}}}}}}}},"components":{"schemas":{"DeleteRequest":{"title":"DeleteRequest","required":["index_name"],"type":"object","properties":{"index_name":{"title":"Index
+  Name","minLength":1,"pattern":"^[^.:][^:]*$","type":"string","description":"Название
+  индекса","example":"index_name"}},"description":"Удаление
+  индекса"},"DeleteResponse":{"title":"DeleteResponse","required":["result"],"type":"object","properties":{"result":{"$ref":"#/components/schemas/IndexDeleteModel"}},"description":"Удаление
+  индекса"},"HTTPValidationError":{"title":"HTTPValidationError","type":"object","properties":{"detail":{"title":"Detail","type":"array","items":{"$ref":"#/components/schemas/ValidationError"}}}},"IndexDeleteModel":{"title":"IndexDeleteModel","required":["deleted"],"type":"object","properties":{"deleted":{"title":"Deleted","type":"integer","description":"Удалено
+  документов из индекса","example":1000}},"description":"Количество удаленных
+  документов"},"IndexInfoModel":{"title":"IndexInfoModel","required":["index_name","num_documents"],"type":"object","properties":{"index_name":{"title":"Index
+  Name","minLength":1,"pattern":"^[^.:][^:]*$","type":"string","description":"Название
+  индекса","example":"index_name"},"num_documents":{"title":"Num
+  Documents","type":"integer","description":"Количество документов в
+  индексе","example":1000}},"description":"Индекс и количество документов в
+  нем"},"IndexIntentModel":{"title":"IndexIntentModel","required":["removing","removing_uniq","adding","adding_uniq","total_before"],"type":"object","properties":{"removing":{"title":"Removing","type":"integer","description":"Получено
+  для удаления","example":3},"removing_uniq":{"title":"Removing
+  Uniq","type":"integer","description":"Уникальных среди полученных для
+  удаления","example":3},"adding":{"title":"Adding","type":"integer","description":"Получено
+  для добавления","example":3},"adding_uniq":{"title":"Adding
+  Uniq","type":"integer","description":"Уникальных среди полученных для
+  добавления","example":3},"total_before":{"title":"Total
+  Before","type":"integer","description":"Было в
+  индексе","example":0},"removed":{"title":"Removed","type":"integer","description":"Удалено
+  из индекса","example":0},"not_removed":{"title":"Not
+  Removed","type":"integer","description":"Не удалено из индекса (не нашли,
+  например)","example":0},"added":{"title":"Added","type":"integer","description":"Добавлено
+  в индекс","example":3},"not_added":{"title":"Not
+  Added","type":"integer","description":"Не добавлено в индекс (записи уже были,
+  например)","example":0},"total_after":{"title":"Total
+  After","type":"integer","description":"Стало в
+  индексе","example":3}},"description":"Статистики по индексации сэмплов с
+  интентами"},"IndexIntentRequest":{"title":"IndexIntentRequest","required":["index_name"],"type":"object","properties":{"index_name":{"title":"Index
+  Name","minLength":1,"pattern":"^[^.:][^:]*$","type":"string","description":"Название
+  индекса","example":"index_name"},"remove":{"title":"Remove","maxItems":1000,"type":"array","items":{"$ref":"#/components/schemas/IntentSampleModel"},"description":"Сэмплы
+  с интентами для удаления из
+  индекса","default":[],"example":[{"project_id":4,"intent_id":123,"sample_id":456,"sample":"Как
+  перевыпустить
+  карту?"}]},"add":{"title":"Add","maxItems":1000,"type":"array","items":{"$ref":"#/components/schemas/IntentSampleModel"},"description":"Сэмплы
+  с интентами для добавления в
+  индекс","default":[],"example":[{"project_id":4,"intent_id":123,"sample_id":457,"sample":"Как
+  получить карту?"}]}},"description":"Индексация сэмлов с
+  интентами"},"IndexIntentResponse":{"title":"IndexIntentResponse","required":["result"],"type":"object","properties":{"result":{"$ref":"#/components/schemas/IndexIntentModel"}},"description":"Индексация
+  сэмлов с
+  интентами"},"InfoResponse":{"title":"InfoResponse","required":["result"],"type":"object","properties":{"result":{"title":"Result","type":"array","items":{"$ref":"#/components/schemas/IndexInfoModel"}}},"description":"Информация
+  об
+  индексах"},"IntentIdThresholdModel":{"title":"IntentIdThresholdModel","required":["intent_id"],"type":"object","properties":{"intent_id":{"title":"Intent
+  Id","type":"integer","description":"ID
+  интента","example":123},"threshold":{"title":"Threshold","maximum":1.0,"minimum":0.0,"type":"number","description":"Порог
+  схожести","default":0.85}}},"IntentSampleModel":{"title":"IntentSampleModel","required":["project_id","intent_id","sample_id","sample"],"type":"object","properties":{"project_id":{"title":"Project
+  Id","type":"integer","description":"ID
+  проекта","example":4},"intent_id":{"title":"Intent
+  Id","type":"integer","description":"ID
+  интента","example":123},"sample_id":{"title":"Sample
+  Id","type":"integer","description":"ID
+  сэмпла","example":456},"sample":{"title":"Sample","minLength":1,"type":"string","description":"Текст
+  сэмпла","example":"Как перевыпустить
+  карту?"}}},"SampleIdScoreModel":{"title":"SampleIdScoreModel","required":["project_id","intent_id","sample_id","sample","score"],"type":"object","properties":{"project_id":{"title":"Project
+  Id","type":"integer","description":"ID
+  проекта","example":4},"intent_id":{"title":"Intent
+  Id","type":"integer","description":"ID
+  интента","example":123},"sample_id":{"title":"Sample
+  Id","type":"integer","description":"ID
+  сэмпла","example":456},"sample":{"title":"Sample","minLength":1,"type":"string","description":"Текст
+  сэмпла","example":"Как перевыпустить
+  карту?"},"score":{"title":"Score","type":"number","description":"Скор
+  схожести","example":0.85}},"description":"Найденный сэмпл с интентом и скором
+  схожести"},"SearchIntentModel":{"title":"SearchIntentModel","required":["intent_id","weight","similarities"],"type":"object","properties":{"intent_id":{"title":"Intent
+  Id","type":"integer","description":"ID
+  интента","example":123},"weight":{"title":"Weight","type":"number","description":"Вес
+  интента суммарно из его схожих с текстом
+  сэмплов","example":0.85},"similarities":{"title":"Similarities","type":"array","items":{"$ref":"#/components/schemas/SampleIdScoreModel"}}},"description":"Найденный
+  интент со списком ближайших
+  сэмплов"},"SearchIntentRequest":{"title":"SearchIntentRequest","required":["index_name","text"],"type":"object","properties":{"index_name":{"title":"Index
+  Name","minLength":1,"pattern":"^[^.:][^:]*$","type":"string","description":"Название
+  индекса","example":"index_name"},"project_id":{"title":"Project
+  Id","type":"integer","description":"ID
+  проекта","example":4},"text":{"title":"Text","minLength":1,"type":"string","description":"Текст
+  для поиска","example":"Перевыпуск
+  карты"},"thresholds_diff":{"title":"Thresholds
+  Diff","maxItems":1000,"type":"array","items":{"$ref":"#/components/schemas/IntentIdThresholdModel"},"description":"Кастомные
+  пороги для
+  интентов","default":[],"example":[{"intent_id":123,"threshold":0.85}]},"count":{"title":"Count","maximum":1000.0,"minimum":0.0,"type":"integer","description":"Показать
+  столько ближайших сэмплов у
+  интента","default":0},"only_enable_intents":{"title":"Only Enable
+  Intents","type":"boolean","description":"Отвечать только включенными
+  интентами","default":true}},"description":"Поиск ближайшего интента для
+  фразы"},"SearchIntentResponse":{"title":"SearchIntentResponse","required":["result"],"type":"object","properties":{"result":{"$ref":"#/components/schemas/SearchIntentModel"}},"description":"Поиск
+  ближайшего интента для
+  фразы"},"SearchSamplesRequest":{"title":"SearchSamplesRequest","required":["index_name","text"],"type":"object","properties":{"index_name":{"title":"Index
+  Name","minLength":1,"pattern":"^[^.:][^:]*$","type":"string","description":"Название
+  индекса","example":"index_name"},"project_id":{"title":"Project
+  Id","type":"integer","description":"ID
+  проекта","example":4},"intent_id":{"title":"Intent
+  Id","type":"integer","description":"ID
+  интента","example":123},"text":{"title":"Text","minLength":1,"type":"string","description":"Текст
+  для поиска","example":"Перевыпуск
+  карты"},"count":{"title":"Count","maximum":1000.0,"minimum":1.0,"type":"integer","description":"Количество
+  искомых
+  текстов","default":10},"threshold":{"title":"Threshold","maximum":1.0,"minimum":0.0,"type":"number","description":"Порог
+  схожести","default":0.85}},"description":"Поиск ближайших сэмплов по фразе для
+  интента"},"SearchSamplesResponse":{"title":"SearchSamplesResponse","required":["result"],"type":"object","properties":{"result":{"title":"Result","type":"array","items":{"$ref":"#/components/schemas/SampleIdScoreModel"}}},"description":"Поиск
+  ближайших сэмплов по фразе для
+  интента"},"ValidationError":{"title":"ValidationError","required":["loc","msg","type"],"type":"object","properties":{"loc":{"title":"Location","type":"array","items":{"type":"string"}},"msg":{"title":"Message","type":"string"},"type":{"title":"Error
+  Type","type":"string"}}}}}}'
+contentType: yaml

@@ -1,0 +1,51 @@
+_id: req_9cf2d5b55516484581cc85dfa9c7309e
+type: Request
+parentId: wrk_29088865483246a1a25c4f108d70b51d
+modified: 1673874052908
+created: 1673874052908
+url: "{{ _['endpoint-server-in'] }}/talkbot/slots"
+name: slots
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+        "message": {
+            "text": "двадцать пятое"
+        },
+        "slots": [
+            "ALLO_INBOT",
+            "BLOCKING_REASON_INBOT",
+            "CARD_INBOT",
+            "CURRENCY",
+            "DATE_INBOT",
+            "EDUCATION_INBOT",
+            "FULLDATE_INBOT",
+            "GREETING_INBOT",
+            "INSURANCE_INBOT",
+            "MIRROR_TALKBOT",
+            "MONEY_INBOT",
+            "NUMBERS_INBOT",
+            "OPERATOR_INBOT",
+            "PAID_INBOT",
+            "PRODUCT_TYPE_TALKBOT",
+            "WAIT_INBOT",
+            "WHY_INBOT",
+            "MULTIPLE_PRODUCT_TYPE_TALKBOT"
+        ]
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_09f48f022fbb409db99e0b84f63da238
+authentication: {}
+metaSortKey: -1000000000
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
